@@ -1,0 +1,83 @@
+package com.company.mysapbtpsdkproject_mul_offline.ui.odata.screens.complextype.address
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.ScreenType
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.getEntityScreenInfo
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.screenTitle
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.screens.DeleteEntityWithConfirmation
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.screens.OperationScreen
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.screens.OperationScreenSettings
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.screens.getSelectedItemActionsList
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.viewmodel.ComplexTypeViewModel
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.viewmodel.EntityOperationType
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.viewmodel.EntityUpdateOperationType
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.viewmodel.IEntityOperationType
+import com.company.mysapbtpsdkproject_mul_offline.ui.odata.viewmodel.ODataViewModel
+import com.sap.cloud.mobile.kotlin.odata.ComplexValue
+import com.sap.cloud.mobile.kotlin.odata.Property
+
+val AddressComplexTypesExpandScreen:
+        @Composable (
+            navigateToHome: () -> Unit,
+            navigateUp: () -> Unit,
+            onNavigateProperty: (ComplexValue, Property, IEntityOperationType) -> Unit,
+            viewModel: ODataViewModel<ComplexValue>,
+        ) -> Unit =
+    { navigateToHome, navigateUp, onNavigateProperty, odataViewModel ->
+        val viewModel = odataViewModel as ComplexTypeViewModel
+        val uiState by viewModel.odataUIState.collectAsState()
+        Row(modifier = Modifier) {
+            Box(modifier = Modifier.weight(1f)) {
+                AddressComplexTypeListScreen(
+                    navigateToHome, navigateUp, viewModel, true
+                )
+            }
+            Box(modifier = Modifier.weight(2f)) {
+                if(uiState.masterEntity != null) {
+                    when (uiState.entityOperationType) {
+                        EntityOperationType.DETAIL -> {
+                            AddressComplexTypeDetailScreen(onNavigateProperty, null, viewModel, true)
+                        }
+
+                        EntityOperationType.CREATE, EntityUpdateOperationType.UPDATE_FROM_LIST, EntityUpdateOperationType.UPDATE_FROM_DETAIL -> {
+                            AddressComplexTypeEditScreen(onNavigateProperty, null, viewModel, true)
+                        }
+                    }
+                } else {
+                    AddressBlankScreen(viewModel)
+                }
+            }
+        }
+    }
+
+val AddressBlankScreen:
+        @Composable (
+            viewModel: ComplexTypeViewModel,
+        ) -> Unit =
+    { viewModel ->
+    val deleteState = remember {
+        mutableStateOf(false)
+    }
+    OperationScreen(
+        screenSettings = OperationScreenSettings(
+            title = screenTitle(
+                getEntityScreenInfo(viewModel.complexType),
+                ScreenType.Details
+            ),
+            actionItems = getSelectedItemActionsList(
+                viewModel, deleteState
+            ),
+            navigateUp = null,
+        ), modifier = Modifier, viewModel = viewModel
+    ) {
+        Box(modifier = Modifier)
+        DeleteEntityWithConfirmation(viewModel, deleteState)
+    }
+}

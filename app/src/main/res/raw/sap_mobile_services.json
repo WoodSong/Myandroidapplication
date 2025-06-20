@@ -1,0 +1,18 @@
+{
+  "__comment": "When modifying this file, you need to reset or reinstall all current client installations",
+  "auth": [{
+      "type": "oauth2",
+      "config": {
+        "oauth2.clients": [
+
+          { "clientID": "3372e317-7731-4051-9ab2-94591aaa8b6b", "redirectURL": "https://mobile-tenant1-smpadmsh3-tenant-ciat-sample-oauth-multiple.cfapps.sap.hana.ondemand.com/demos", "grantType": "authorization_code" }
+        ],
+        "oauth2.tokenEndpoint": "https://mobile-tenant1-smpadmsh3-tenant-ciat-sample-oauth-multiple.cfapps.sap.hana.ondemand.com/oauth2/api/v1/token",
+        "oauth2.authorizationEndpoint": "https://mobile-tenant1-smpadmsh3-tenant-ciat-sample-oauth-multiple.cfapps.sap.hana.ondemand.com/oauth2/api/v1/authorize"
+      },
+      "requireOtp": false
+    }],
+  "ServiceUrl" : "https://mobile-tenant1-smpadmsh3-tenant-ciat-sample-oauth-multiple.cfapps.sap.hana.ondemand.com/",
+  "appID": "ciat.sample.oauth.multiple",
+  "multiUser": true
+}

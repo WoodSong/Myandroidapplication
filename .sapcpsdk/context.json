@@ -1,0 +1,16 @@
+{
+  "projectInfo": {
+    "projectName": "MySAPBTPSDKProject_mul_offline",
+    "createdDate": "Thursday, June 12, 2025 at 3:51:13 PM",
+    "regenerateProxyClassDate": ""
+  },
+  "cloudApplication": {
+    "cloudApplicationId": "ciat.sample.oauth.multiple",
+    "destinations": [
+      {
+        "id": "com.sap.edm.sampleservice.v4"
+      }
+    ]
+  },
+  "msServerConfigurationName": "sh3"
+}

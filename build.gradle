@@ -1,0 +1,35 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.9.25'
+    ext.work_version = '2.9.0'
+    ext.guava_android_version = '33.2.1-android'
+	ext.compose_version = '1.6.8'
+	
+    ext.repos = {
+        google()
+        jcenter()
+        mavenLocal()
+        // Add jitpack repository for com.github.jeziellago:compose-markdown
+        maven { url 'https://jitpack.io' }
+        maven {
+                    url 'https://int.repositories.cloud.sap/artifactory/build-snapshots/'
+                }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.6.1'
+        classpath 'com.android.tools.build.jetifier:jetifier-core:1.0.0-beta10'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+   repositories repos
+}
+
+allprojects {
+    repositories repos
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}
