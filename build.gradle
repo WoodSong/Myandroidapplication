@@ -1,11 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.9.25'
-    ext.work_version = '2.9.0'
-    ext.guava_android_version = '33.2.1-android'
-	ext.compose_version = '1.6.8'
-	
     ext.repos = {
         google()
         jcenter()
@@ -17,9 +12,9 @@ buildscript {
                 }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.6.1'
-        classpath 'com.android.tools.build.jetifier:jetifier-core:1.0.0-beta10'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath(libs.agp.gradle.plugin)
+        classpath(libs.jetifier.core)
+        classpath(libs.kotlin.gradle.plugin)
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
