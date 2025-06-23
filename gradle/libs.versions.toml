@@ -1,6 +1,6 @@
 [versions]
-kotlin = "1.9.22"
-agp = "8.1.2" # Android Gradle Plugin version
+kotlin = "2.1.21"
+agp = "8.10.1" # Android Gradle Plugin version
 work = "2.9.0"
 guavaAndroid = "33.2.1-android"
 compose = "1.6.8"
