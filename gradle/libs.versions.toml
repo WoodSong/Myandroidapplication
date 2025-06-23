@@ -1,11 +1,11 @@
 [versions]
 kotlin = "1.9.22"
-agp = "8.1.2" # Android Gradle Plugin version
+agp = "8.10.1" # Android Gradle Plugin version
 work = "2.9.0"
 guavaAndroid = "33.2.1-android"
 compose = "1.6.8"
 composeCompiler = "1.5.15"
-sapSdkVersion = "undefined-see-gradle-properties" # Placeholder
+sapSdkVersion = "25.4.0-ms.20250404.nightly"
 
 coreKtx = "1.15.0"
 coreSplashScreen = "1.0.1"
@@ -65,7 +65,7 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 zip4j = { group = "net.lingala.zip4j", name = "zip4j", version.ref = "zip4j" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 
-# SAP SDK Dependencies (using placeholder for version)
+# SAP SDK Dependencies (using placeholder for version)sap-cloud-odata
 sap-cloud-foundation = { group = "com.sap.cloud.android", name = "foundation", version.ref = "sapSdkVersion" }
 sap-cloud-foundation-app-security = { group = "com.sap.cloud.android", name = "foundation-app-security", version.ref = "sapSdkVersion" }
 sap-cloud-onboarding-compose = { group = "com.sap.cloud.android", name = "onboarding-compose", version.ref = "sapSdkVersion" }
@@ -73,8 +73,8 @@ sap-cloud-flows-compose = { group = "com.sap.cloud.android", name = "flows-compo
 sap-cloud-fiori-composable-theme = { group = "com.sap.cloud.android", name = "fiori-composable-theme", version.ref = "sapSdkVersion" }
 sap-cloud-fiori-compose-ui = { group = "com.sap.cloud.android", name = "fiori-compose-ui", version.ref = "sapSdkVersion" }
 sap-cloud-permission-request-tracker = { group = "com.sap.cloud.android", name = "permission-request-tracker", version.ref = "sapSdkVersion" }
-sap-cloud-odata = { module = "com.sap.cloud.android:odata", classifier = "kotlin", ext = "aar", version.ref = "sapSdkVersion" } # Using module notation for classifier/ext
-sap-cloud-offline-odata = { module = "com.sap.cloud.android:offline-odata", classifier = "kotlin", ext = "aar", version.ref = "sapSdkVersion" } # Using module notation for classifier/ext
+sap-cloud-odata = { group = "com.sap.cloud.android", name = "odata", version.ref = "sapSdkVersion" }
+sap-cloud-offline-odata = { group = "com.sap.cloud.android", name = "odata-offline", version.ref = "sapSdkVersion" }
 
 
 # AndroidTest dependencies

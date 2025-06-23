@@ -136,8 +136,18 @@ dependencies {
     implementation(libs.sap.cloud.fiori.composable.theme)
     implementation(libs.sap.cloud.fiori.compose.ui)
     implementation(libs.sap.cloud.permission.request.tracker)
-    implementation(libs.sap.cloud.odata)
-    implementation(libs.sap.cloud.offline.odata)
+    implementation(libs.sap.cloud.odata){
+        artifact {
+            classifier = 'kotlin'
+            extension = 'aar'
+        }
+    }
+    implementation(libs.sap.cloud.offline.odata){
+        artifact {
+            classifier = 'kotlin'
+            extension = 'aar'
+        }
+    }
 
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.androidx.test.runner)
